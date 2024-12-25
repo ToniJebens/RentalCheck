@@ -77,10 +77,6 @@ Run the main script and upload a tenancy agreement (PDF) when prompted:
    streamlit run lib/pipeline/main.py
    ```
 
-### Example Output
-
-<img src="lib/app/app_data/image.png" alt="Example Output" width="500"/>
-
 ---
 
 ## Limitations
