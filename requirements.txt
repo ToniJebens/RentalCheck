@@ -1,0 +1,5 @@
+jinja2
+openai
+pandas
+pymupdf
+streamlit==1.41.1
