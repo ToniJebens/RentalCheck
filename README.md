@@ -1,6 +1,6 @@
-# RentalCheck: Automated Information Extraction from Rental Contracts
+# RentalCheck: Automated Information Extraction from Tenancy Agreements
 
-RentalCheck is a tool designed to automate the extraction of key information from rental contracts using advanced AI language models. This project streamlines the process of analyzing rental agreements, enabling users to quickly extract and interpret essential details such as tenant names, property details, rent amounts, and contract terms.
+RentalCheck is a tool designed to automate the extraction of key information from tenancy agreements using GPT. This project streamlines the process of analyzing tenancy agreements, enabling users to quickly extract and interpret essential details such as tenant names, property details, rent amounts, and contract terms. Citations are provided for all answers and become visible when clicking on individual answers.
 
 ---
 
@@ -10,11 +10,8 @@ RentalCheck is a tool designed to automate the extraction of key information fro
 2. [Getting Started](#getting-started)
 3. [Installation](#installation)
 4. [Usage](#usage)
-5. [Project Structure](#project-structure)
-6. [Examples](#examples)
-7. [Limitations](#limitations)
-8. [Future Work](#future-work)
-9. [License](#license)
+5. [Limitations](#limitations)
+6. [Future Work](#future-work)
 
 ---
 
@@ -74,73 +71,15 @@ To use RentalCheck, you need the following:
 
 ### Extracting Information from a Rental Contract
 
-1. Place the rental contract PDF file in the `data/raw/` directory.
-2. Run the main script with the filename of the raw PDF:
+Run the main script and upload a tenancy agreement (PDF) when prompted:
 
-   ```bash
-   python main.py "Contract_Name.pdf"
+   ```zsh
+   streamlit run lib/pipeline/main.py
    ```
-
-3. The extracted text will be saved to `data/processed/Contract_Name.txt`, and key information will be displayed in the terminal.
 
 ### Example Output
 
-```json
-{
-    "tenant_name": "John Doe",
-    "property_address": "123 Main Street, Springfield, USA",
-    "monthly_rent": "$1200",
-    "lease_start_date": "2024-01-01",
-    "lease_end_date": "2025-01-01"
-}
-```
-
----
-
-## Project Structure
-
-```
-RentalCheck/
-├── data/
-│   ├── raw/                # Raw PDF contracts
-│   ├── processed/          # Processed text files
-├── lib/
-│   ├── pipeline/
-│   │   ├── process.py      # PDF processing logic
-│   │   ├── llm.py          # LLM interaction and prompt generation
-│   ├── models/
-│   │   ├── answer_models.py # Pydantic models for structured responses
-├── wip/
-│   ├── tests.ipynb         # Testing and experimentation
-├── prompts/                # Jinja2 templates for LLM prompts
-├── README.md               # Project documentation
-├── main.py                 # Main script
-```
-
----
-
-## Examples
-
-### Extract Text from a Rental Contract
-
-```python
-from lib.pipeline.process import PDFProcessor
-
-processor = PDFProcessor("Contract_Name.pdf")
-processor.extract_text()
-text = processor.read_processed_text()
-print(text)
-```
-
-### Analyze Extracted Text with LLM
-
-```python
-from lib.pipeline.llm import load_prompt_template, llm_call
-
-prompt = load_prompt_template("user_prompt").render(contract="Extracted contract text")
-response = llm_call(user_prompt=prompt)
-print(response)
-```
+<img src="lib/app/app_data/image.png" alt="Example Output" width="500"/>
 
 ---
 
@@ -156,6 +95,5 @@ print(response)
 - Integrate models with longer context windows.
 - Add support for multi-file processing.
 - Expand extraction capabilities for more contract types.
-- Implement a web-based interface for easier usage.
 
 ---

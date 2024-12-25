@@ -5,7 +5,7 @@ from rich import print as pretty
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 
-from lib.app.rental_check import deploy_streamlit
+from lib.app.streamlit import deploy_streamlit
 from lib.pipeline.llm import llm_call, load_prompt_template
 from lib.pipeline.process import PDFProcessor
 
@@ -54,10 +54,10 @@ def process_contract(file_path: str) -> dict:
 if __name__ == "__main__":
     import streamlit as st
 
-    st.title("Rental Contract Processor")
+    st.title("Tenancy Agreement Processor")
 
     # File upload widget
-    uploaded_file = st.file_uploader("Upload a rental contract PDF:", type=["pdf"])
+    uploaded_file = st.file_uploader("Upload a tenancy agreement (PDF):", type=["pdf"])
 
     if uploaded_file is not None:
         # Save the uploaded file to the raw data directory
